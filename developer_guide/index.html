@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Integration Test" href="integration_tests.html" /><link rel="prev" title="Changelog" href="../changelog.html" />
 
     <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
-        <title>Development - SQLAlchemy-Exasol 4.1.0</title>
+        <title>Development - SQLAlchemy-Exasol 4.2.0</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="../index.html"><div class="brand">SQLAlchemy-Exasol 4.1.0</div></a>
+      <a href="../index.html"><div class="brand">SQLAlchemy-Exasol 4.2.0</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -151,7 +151,7 @@
     <img class="sidebar-logo only-dark" src="../_static/dark-exasol-logo.svg" alt="Dark Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">SQLAlchemy-Exasol 4.1.0</span>
+  <span class="sidebar-brand-text">SQLAlchemy-Exasol 4.2.0</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -344,34 +344,66 @@ In order to run a specific task execute the following command:</p>
 <p>If something still is not working or unclear, you may want to look into the CI/CD <a class="reference external" href="https://github.com/exasol/sqlalchemy_exasol/actions">action</a> files.</p>
 </div>
 </section>
-<section id="changelog-scriv">
-<h2>Changelog (scriv)<a class="headerlink" href="#changelog-scriv" title="Permalink to this heading">#</a></h2>
-<p>What, why and from whom to write a changelog you can read up on <a class="reference external" href="https://keepachangelog.com/en/1.1.0/">keepachangelog</a>, in
-this section we just want give the information on how to keep track of fragments
-which later will be used to create the changelog on the next published release.</p>
-<p>For the bookkeeping and generation of the changelog we use <a class="reference external" href="https://scriv.readthedocs.io/en/latest/index.html">scriv</a>, so if you
-find the information in this section not sufficient we recommend to consult the
-<a class="reference external" href="https://scriv.readthedocs.io/en/latest/index.html">scriv</a> documentation.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>keep in mind that all our docs, including the changelog are in the
-restructuredText format when you format your entries.</p>
-</div>
-<p>Run the following command to create a new changelog fragment.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scriv<span class="w"> </span>create<span class="w"> </span>--edit
+<section id="changelog">
+<h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading">#</a></h2>
+<p>Currently we keep our changelog in a single file <em>CHANGELOG.rst</em>.
+For every relevant change an entry in the <em>unreleased</em> section of the changelog is
+added. When a release is created the <em>unreleased</em> section is turned into the
+section for the release, by replacing the section title with the version number and the release date of the release.
+Afterwards a new empty unreleased section must be added at the top of the changelog.</p>
+<p>Example of <em>CHANGELOG.rst</em> before <em>5.0.0</em> release:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_changelog-unreleased:</span>
+
+<span class="gh">Unreleased</span>
+<span class="gh">==================</span>
+
+<span class="gh">✨ Added</span>
+<span class="gh">--------</span>
+
+<span class="m">*</span> Some more changes ...
+
+
+<span class="p">..</span> <span class="nt">_changelog-4.0.0:</span>
+
+<span class="gh">4.0.0 — 2022-12-01</span>
+<span class="gh">==================</span>
+
+<span class="gh">✨ Added</span>
+<span class="gh">--------</span>
+
+<span class="m">*</span> Some changes ...
 </pre></div>
 </div>
-<p>An editor will open and you get prompted with a template, uncomment
-sections headings you need and add your entries below.
-Also make sure you commit the created fragment once you’re done.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>To make sure you won’t forgetting to commit the fragment, you can use
-the <cite>–add</cite> flag to automatically add it to the git index.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scriv<span class="w"> </span>create<span class="w"> </span>--edit<span class="w"> </span>--add
+<p>Example of <em>CHANGELOG.rst</em> after <em>5.0.0</em> release:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_changelog-unreleased:</span>
+
+<span class="gh">Unreleased</span>
+<span class="gh">==========</span>
+
+<span class="p">..</span> <span class="nt">_changelog-5.0.0:</span>
+
+<span class="gh">5.0.0 - 2023-01-01</span>
+<span class="gh">==================</span>
+
+<span class="gh">✨ Added</span>
+<span class="gh">--------</span>
+
+<span class="m">*</span> Some more changes ...
+
+
+<span class="p">..</span> <span class="nt">_changelog-4.0.0:</span>
+
+<span class="gh">4.0.0 — 2022-12-01</span>
+<span class="gh">==================</span>
+
+<span class="gh">✨ Added</span>
+<span class="gh">--------</span>
+
+<span class="m">*</span> Some changes ...
 </pre></div>
 </div>
-</div>
+<p>For more general information on, why and for whom to create a changelog, have a
+look at <a class="reference external" href="https://keepachangelog.com/en/1.1.0/">keepachangelog</a>.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -448,7 +480,7 @@ the <cite>–add</cite> flag to automatically add it to the git index.</p>
 </li>
 <li><a class="reference internal" href="#task-runner-nox">Task Runner (Nox)</a></li>
 <li><a class="reference internal" href="#tests">Tests</a></li>
-<li><a class="reference internal" href="#changelog-scriv">Changelog (scriv)</a></li>
+<li><a class="reference internal" href="#changelog">Changelog</a></li>
 </ul>
 </li>
 </ul>
