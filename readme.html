@@ -5,7 +5,7 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Changelog" href="changelog.html" /><link rel="prev" title="SQLAlchemy-Exasol" href="index.html" />
 
-    <!-- Generated with Sphinx 6.1.3 and Furo 2022.12.07 -->
+    <!-- Generated with Sphinx 6.2.1 and Furo 2022.12.07 -->
         <title>Readme - SQLAlchemy-Exasol 4.4.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
@@ -211,7 +211,7 @@
 <a class="reference external image-reference" href="https://www.exasol.com/"><img alt="Exasol - Supported Version(s)" src="https://img.shields.io/badge/exasol-7.1.9%20%7C%207.0.18-green" /></a>
 <a class="reference external image-reference" href="https://github.com/psf/black"><img alt="Formatter - Black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
 <a class="reference external image-reference" href="https://pycqa.github.io/isort/"><img alt="Formatter - Isort" src="https://img.shields.io/badge/imports-isort-ef8336.svg" /></a>
-<a class="reference external image-reference" href="https://github.com/PyCQA/pylint"><img alt="Pylint" src="https://img.shields.io/badge/pylint-5.8-yellow" /></a>
+<a class="reference external image-reference" href="https://github.com/PyCQA/pylint"><img alt="Pylint" src="https://img.shields.io/badge/pylint-6.4-yellowgreen" /></a>
 <a class="reference external image-reference" href="https://opensource.org/licenses/BSD-2-Clause"><img alt="License" src="https://img.shields.io/pypi/l/sqlalchemy-exasol" /></a>
 <a class="reference external image-reference" href="https://pypi.org/project/sqlalchemy-exasol/"><img alt="Last Commit" src="https://img.shields.io/github/last-commit/exasol/sqlalchemy-exasol" /></a>
 <a class="reference external image-reference" href="https://pypi.org/project/sqlalchemy-exasol"><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/sqlalchemy-exasol" /></a>
@@ -219,17 +219,6 @@
 <h3>How to get started<a class="headerlink" href="#how-to-get-started" title="Permalink to this heading">#</a></h3>
 <p>We assume you have a good understanding of (unix)ODBC. If not, make sure you
 read their documentation carefully - there are lot’s of traps 🪤 to step into.</p>
-<section id="meet-the-system-requirements">
-<h4>Meet the system requirements<a class="headerlink" href="#meet-the-system-requirements" title="Permalink to this heading">#</a></h4>
-<p>On Linux/Unix like systems you need:</p>
-<ul class="simple">
-<li><p>Python</p></li>
-<li><p>An Exasol DB (e.g. <a class="reference external" href="https://github.com/exasol/docker-db">docker-db</a> or a <a class="reference external" href="https://www.exasol.com/test-it-now/cloud/">cloud instance</a>)</p></li>
-<li><p>The packages unixODBC and unixODBC-dev &gt;= 2.2.14</p></li>
-<li><p>The Exasol <a class="reference external" href="https://docs.exasol.com/db/latest/connect_exasol/drivers/odbc/odbc_linux.htm">ODBC driver</a></p></li>
-<li><p>The ODBC.ini and ODBCINST.ini configurations files setup</p></li>
-</ul>
-</section>
 <section id="turbodbc-support">
 <h4>Turbodbc support<a class="headerlink" href="#turbodbc-support" title="Permalink to this heading">#</a></h4>
 <div class="admonition warning">
@@ -240,6 +229,17 @@ read their documentation carefully - there are lot’s of traps 🪤 to step int
 <li><p>You can use Turbodbc with sqlalchemy_exasol if you use a python version &gt;= 3.8.</p></li>
 <li><p>Multi row update is not supported, see
 <a class="reference external" href="test/test_update.py">test/test_update.py</a> for an example</p></li>
+</ul>
+</section>
+<section id="meet-the-system-requirements">
+<h4>Meet the system requirements<a class="headerlink" href="#meet-the-system-requirements" title="Permalink to this heading">#</a></h4>
+<p>On Linux/Unix like systems you need:</p>
+<ul class="simple">
+<li><p>Python</p></li>
+<li><p>An Exasol DB (e.g. <a class="reference external" href="https://github.com/exasol/docker-db">docker-db</a> or a <a class="reference external" href="https://www.exasol.com/test-it-now/cloud/">cloud instance</a>)</p></li>
+<li><p>The packages unixODBC and unixODBC-dev &gt;= 2.2.14</p></li>
+<li><p>The Exasol <a class="reference external" href="https://docs.exasol.com/db/latest/connect_exasol/drivers/odbc/odbc_linux.htm">ODBC driver</a></p></li>
+<li><p>The ODBC.ini and ODBCINST.ini configurations files setup</p></li>
 </ul>
 </section>
 <section id="setup-your-python-project-and-install-sqlalchemy-exasol">
@@ -287,7 +287,6 @@ read their documentation carefully - there are lot’s of traps 🪤 to step int
 <h5>Features<a class="headerlink" href="#features" title="Permalink to this heading">#</a></h5>
 <ul class="simple">
 <li><p>SELECT, INSERT, UPDATE, DELETE statements</p></li>
-<li><p>you can even use the MERGE statement (see unit tests for examples)</p></li>
 </ul>
 </section>
 <section id="notes">
@@ -362,8 +361,8 @@ read their documentation carefully - there are lot’s of traps 🪤 to step int
 <li><a class="reference internal" href="#">Readme</a><ul>
 <li><a class="reference internal" href="#sqlalchemy-dialect-for-exasol-db">SQLAlchemy Dialect for EXASOL DB</a><ul>
 <li><a class="reference internal" href="#how-to-get-started">How to get started</a><ul>
-<li><a class="reference internal" href="#meet-the-system-requirements">Meet the system requirements</a></li>
 <li><a class="reference internal" href="#turbodbc-support">Turbodbc support</a></li>
+<li><a class="reference internal" href="#meet-the-system-requirements">Meet the system requirements</a></li>
 <li><a class="reference internal" href="#setup-your-python-project-and-install-sqlalchemy-exasol">Setup your python project and install sqlalchemy-exasol</a></li>
 <li><a class="reference internal" href="#talk-to-the-exasol-db-using-sqlalchemy">Talk to the EXASOL DB using SQLAlchemy</a><ul>
 <li><a class="reference internal" href="#features">Features</a></li>
