@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Changelog" href="changelog.html" /><link rel="prev" title="SQLAlchemy-Exasol" href="index.html" />
 
     <!-- Generated with Sphinx 6.2.1 and Furo 2022.12.07 -->
-        <title>Readme - SQLAlchemy-Exasol 4.5.1</title>
+        <title>Readme - SQLAlchemy-Exasol 4.6.0</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -124,7 +124,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="index.html"><div class="brand">SQLAlchemy-Exasol 4.5.1</div></a>
+      <a href="index.html"><div class="brand">SQLAlchemy-Exasol 4.6.0</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -151,7 +151,7 @@
     <img class="sidebar-logo only-dark" src="_static/dark-exasol-logo.svg" alt="Dark Logo"/>
   </div>
   
-  <span class="sidebar-brand-text">SQLAlchemy-Exasol 4.5.1</span>
+  <span class="sidebar-brand-text">SQLAlchemy-Exasol 4.6.0</span>
   
 </a><form class="sidebar-search-container" method="get" action="search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
@@ -205,7 +205,7 @@
 <h1>Readme<a class="headerlink" href="#readme" title="Permalink to this heading">#</a></h1>
 <section id="sqlalchemy-dialect-for-exasol-db">
 <h2>SQLAlchemy Dialect for EXASOL DB<a class="headerlink" href="#sqlalchemy-dialect-for-exasol-db" title="Permalink to this heading">#</a></h2>
-<a class="reference external image-reference" href="https://github.com/exasol/sqlalchemy_exasol/actions?query=workflow%3ACI:alt:CIStatus"><img alt="https://github.com/exasol/sqlalchemy_exasol/workflows/CI/badge.svg?branch=master" src="https://github.com/exasol/sqlalchemy_exasol/workflows/CI/badge.svg?branch=master" /></a>
+<a class="reference external image-reference" href="https://github.com/exasol/sqlalchemy-exasol/actions/workflows/ci-cd.yml:alt:CIStatus"><img alt="https://github.com/exasol/sqlalchemy-exasol/actions/workflows/ci-cd.yml/badge.svg?branch=master&amp;event=push" src="https://github.com/exasol/sqlalchemy-exasol/actions/workflows/ci-cd.yml/badge.svg?branch=master&amp;event=push" /></a>
 <a class="reference external image-reference" href="https://pypi.org/project/sqlalchemy-exasol/"><img alt="PyPI Version" src="https://img.shields.io/pypi/v/sqlalchemy_exasol" /></a>
 <a class="reference external image-reference" href="https://pypi.org/project/sqlalchemy-exasol"><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/sqlalchemy-exasol" /></a>
 <a class="reference external image-reference" href="https://www.exasol.com/"><img alt="Exasol - Supported Version(s)" src="https://img.shields.io/badge/exasol-7.1.9%20%7C%207.0.18-green" /></a>
@@ -217,8 +217,11 @@
 <a class="reference external image-reference" href="https://pypi.org/project/sqlalchemy-exasol"><img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/sqlalchemy-exasol" /></a>
 <section id="how-to-get-started">
 <h3>How to get started<a class="headerlink" href="#how-to-get-started" title="Permalink to this heading">#</a></h3>
-<p>We assume you have a good understanding of (unix)ODBC. If not, make sure you
-read their documentation carefully - there are lot’s of traps 🪤 to step into.</p>
+<p>Currently, sqlalchemy-exasol supports multiple dialects. The core difference
+being if the dialect is <code class="code docutils literal notranslate"><span class="pre">odbc</span></code> or <code class="code docutils literal notranslate"><span class="pre">websocket</span></code> based.</p>
+<p>Generally, we advise to use the websocket based Dialect, because odbc
+based dialects require a good understanding of (unix)ODBC and the setup is
+significant more complicated.</p>
 <section id="turbodbc-support">
 <h4>Turbodbc support<a class="headerlink" href="#turbodbc-support" title="Permalink to this heading">#</a></h4>
 <div class="admonition warning">
@@ -233,10 +236,12 @@ read their documentation carefully - there are lot’s of traps 🪤 to step int
 </section>
 <section id="meet-the-system-requirements">
 <h4>Meet the system requirements<a class="headerlink" href="#meet-the-system-requirements" title="Permalink to this heading">#</a></h4>
-<p>On Linux/Unix like systems you need:</p>
 <ul class="simple">
 <li><p>Python</p></li>
 <li><p>An Exasol DB (e.g. <a class="reference external" href="https://github.com/exasol/docker-db">docker-db</a> or a <a class="reference external" href="https://www.exasol.com/test-it-now/cloud/">cloud instance</a>)</p></li>
+</ul>
+<p>ODBC-based dialects additionally require the following to be available and set up:</p>
+<ul class="simple">
 <li><p>The packages unixODBC and unixODBC-dev &gt;= 2.2.14</p></li>
 <li><p>The Exasol <a class="reference external" href="https://docs.exasol.com/db/latest/connect_exasol/drivers/odbc/odbc_linux.htm">ODBC driver</a></p></li>
 <li><p>The ODBC.ini and ODBCINST.ini configurations files setup</p></li>
@@ -254,13 +259,22 @@ read their documentation carefully - there are lot’s of traps 🪤 to step int
 </section>
 <section id="talk-to-the-exasol-db-using-sqlalchemy">
 <h4>Talk to the EXASOL DB using SQLAlchemy<a class="headerlink" href="#talk-to-the-exasol-db-using-sqlalchemy" title="Permalink to this heading">#</a></h4>
+<p><strong>Websocket based Dialect:</strong></p>
+<p>For more details regarding the websocket support checkout <a class="reference external" href="wss">What is Websocket support?</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;exa+websocket://A_USER:A_PASSWORD@192.168.1.2..8:1234/my_schema?CONNECTIONLCALL=en_US.UTF-8&quot;</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select 42 from dual&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Pyodbc (ODBC based Dialect):</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;exa+pyodbc://A_USER:A_PASSWORD@192.168.1.2..8:1234/my_schema?CONNECTIONLCALL=en_US.UTF-8&amp;driver=EXAODBC&quot;</span>
 <span class="n">e</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;select 42 from dual&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>to use turbodbc as driver:</p>
+<p><strong>Turbodbc (ODBC based Dialect):</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;exa+turbodbc://A_USER:A_PASSWORD@192.168.1.2..8:1234/my_schema?CONNECTIONLCALL=en_US.UTF-8&amp;driver=EXAODBC&quot;</span>
 <span class="n">e</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
