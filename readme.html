@@ -260,7 +260,7 @@ significant more complicated.</p>
 <section id="talk-to-the-exasol-db-using-sqlalchemy">
 <h4>Talk to the EXASOL DB using SQLAlchemy<a class="headerlink" href="#talk-to-the-exasol-db-using-sqlalchemy" title="Permalink to this heading">#</a></h4>
 <p><strong>Websocket based Dialect:</strong></p>
-<p>For more details regarding the websocket support checkout <a class="reference external" href="wss">What is Websocket support?</a>.</p>
+<p>For more details regarding the websocket support checkout the section: “What is Websocket support?”</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;exa+websocket://A_USER:A_PASSWORD@192.168.1.2..8:1234/my_schema?CONNECTIONLCALL=en_US.UTF-8&quot;</span>
 <span class="n">e</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
